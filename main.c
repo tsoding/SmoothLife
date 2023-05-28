@@ -110,6 +110,16 @@ void clamp(float *x, float l, float h)
     if (*x > h) *x = h;
 }
 
+void apply_grid_diff(void)
+{
+    for (size_t y = 0; y < HEIGHT; ++y) {
+        for (size_t x = 0; x < WIDTH; ++x) {
+            grid[y][x] += dt*grid_diff[y][x];
+            clamp(&grid[y][x], 0, 1);
+        }
+    }
+}
+
 int main(void)
 {
     srand(time(0));
@@ -118,12 +128,7 @@ int main(void)
     display_grid(grid);
     for (;;) {
         compute_grid_diff();
-        for (size_t y = 0; y < HEIGHT; ++y) {
-            for (size_t x = 0; x < WIDTH; ++x) {
-                grid[y][x] += dt*grid_diff[y][x];
-                clamp(&grid[y][x], 0, 1);
-            }
-        }
+        apply_grid_diff();
         display_grid(grid);
     }
 
