@@ -2,9 +2,9 @@
 
 ## Quick Start
 
-```console
+```bash
 $ ./build.sh
-$ ./main
+$ ./smoothlife_gpu
 ```
 
 ## References
