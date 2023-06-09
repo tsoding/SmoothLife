@@ -5,8 +5,9 @@
 
 #define WIDTH 100
 #define HEIGHT 100
+#define SPEED 6
 
-char level[] = " .-=coaA@#";
+char level[] = " .:-=+*#%@";
 #define level_count (sizeof(level)/sizeof(level[0]) - 1)
 
 float grid[HEIGHT][WIDTH] = {0};
@@ -120,17 +121,29 @@ void apply_grid_diff(void)
     }
 }
 
+int is_not_empty(float grid[HEIGHT][WIDTH])
+{
+    for (size_t y = 0; y < HEIGHT; ++y) {
+        for (size_t x = 0; x < WIDTH; ++x) {
+            if (grid[y][x] != 0) return 1;
+        }
+    }
+    return 0;
+}
+
 int main(void)
 {
     srand(time(0));
     random_grid();
 
     display_grid(grid);
-    for (;;) {
+    while (is_not_empty(grid)) {
+        printf("\033[2J");
+        printf("\033[20;20H");
         compute_grid_diff();
-        apply_grid_diff();
+        for (size_t i = 0; i < SPEED; ++i)
+            apply_grid_diff(); 
         display_grid(grid);
     }
-
     return 0;
 }
