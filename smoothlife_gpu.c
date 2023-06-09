@@ -13,25 +13,25 @@ int main(void)
 {
     float factor = 100;
     float screen_width = 16*factor;
-    float screen_height = 8*factor;
-    float scalar = 0.3;
+    float screen_height = 9*factor;
+    float scalar = 0.2;
     float texture_width = screen_width*scalar;
     float texture_height = screen_height*scalar;
 
     InitWindow(screen_width, screen_height, "SmoothLife");
-    SetTargetFPS(15);
+    SetTargetFPS(60);
 
     // Image image = GenImagePerlinNoise(texture_width, texture_height, 0, 0, 5.0f);
-    // Image image = GenImageWhiteNoise(texture_width, texture_height, 1.0f);
-    Image image = GenImageCellular(texture_width, texture_height, texture_height/6); // 
-    // Image image = GenImageColor(texture_width, texture_height, BLACK);
-    // for (int y = 0; y < texture_height/4; ++y) {
-    //     for (int x = 0; x < texture_width/4; ++x) {
-    //         uint8_t v = rand_float()*255.0f;
-    //         Color color = { v, v, v, 255 };
-    //         ImageDrawPixel(&image, x, y, color);
-    //     }
-    // }
+    // Image image = GenImageWhiteNoise(texture_width, texture_height, 0.9f);
+    // Image image = GenImageCellular(texture_width, texture_height, texture_height/6); //
+    Image image = GenImageColor(texture_width, texture_height, BLACK);
+    for (int y = 0; y < texture_height*1/4; ++y) {
+        for (int x = 0; x < texture_width*1/4; ++x) {
+            uint8_t v = rand_float()*255.0f;
+            Color color = { v, v, v, 255 };
+            ImageDrawPixel(&image, x, y, color);
+        }
+    }
     RenderTexture2D state[2];
 
     state[0] = LoadRenderTexture(texture_width, texture_height);

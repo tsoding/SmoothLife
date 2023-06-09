@@ -15,7 +15,7 @@ uniform vec2 resolution;
 
 float ra = 21;
 
-#if 0
+#if 1
 // Stolen from https://www.shadertoy.com/view/XtdSDn
 float b1 = 0.257;
 float b2 = 0.336;
@@ -32,7 +32,7 @@ float alpha_n = 0.028;
 float alpha_m = 0.147;
 #endif
 
-float dt = 1.0;
+float dt = 0.05;
 
 float sigma(float x, float a, float alpha)
 {
