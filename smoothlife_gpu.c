@@ -25,8 +25,8 @@ int main(void)
     // Image image = GenImageWhiteNoise(texture_width, texture_height, 0.9f);
     // Image image = GenImageCellular(texture_width, texture_height, texture_height/6); //
     Image image = GenImageColor(texture_width, texture_height, BLACK);
-    for (int y = 0; y < texture_height*1/4; ++y) {
-        for (int x = 0; x < texture_width*1/4; ++x) {
+    for (int y = 0; y < texture_height*3/4; ++y) {
+        for (int x = 0; x < texture_width*3/4; ++x) {
             uint8_t v = rand_float()*255.0f;
             Color color = { v, v, v, 255 };
             ImageDrawPixel(&image, x, y, color);
