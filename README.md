@@ -4,9 +4,9 @@ https://github.com/tsoding/SmoothLife/assets/165283/6ea16daa-90ef-4034-a37c-8bd9
 
 ## Quick Start
 
-```console
+```bash
 $ ./build.sh
-$ ./main
+$ ./smoothlife_gpu
 ```
 
 ## References
